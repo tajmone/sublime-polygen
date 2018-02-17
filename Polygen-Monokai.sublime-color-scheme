@@ -1,0 +1,122 @@
+// =============================================================================
+// Polygen Monokai v1.0 (2018-02-16)
+// =============================================================================
+// Created by Tristano Ajmone, 2018.
+// -- https://github.com/tajmone/sublime-polygen
+// 
+// Based on Sublime Text 3 "Monokai" color scheme, by Wimer Hazenberg.
+// -----------------------------------------------------------------------------
+{
+    "name": "Polygen Monokai",
+    "author": "Tristano Ajmone",
+    "variables":
+    {
+        "armadillo1":    "#3E3D32",
+        "armadillo2":    "#48473D",
+        "armadillo3":    "#74705D",
+        "black1":        "#000000",
+        "black2":        "#212117",
+        "black3":        "#282923",
+        "blue":          "#67D8EF",
+        "green":         "#A6E22C",
+        "orange1":       "#FD9621",
+        "orange2":       "#9F570F",
+        "purple":        "#AC80FF",
+        "red1":          "#F83535",
+        "red2":          "#F92472",
+        "white":         "#F8F8F2",
+        "yellow1":       "#E7DB74",
+        "yellow_bright": "#FFE894"
+    },
+    "globals":
+    {
+        "foreground": "var(white)",
+        "background": "var(black3)",
+        "caret": "var(white)",
+        "invisibles": "color(var(white) alpha(0.35))",
+        "line_highlight": "var(armadillo1)",
+
+        // Accents
+        "misspelling": "var(red2)",
+
+        // Selection
+        "selection": "var(armadillo2)",
+        "selection_border": "var(black2)",
+
+        // Find 
+        "find_highlight": "var(yellow_bright)",
+        "find_highlight_foreground": "var(black1)",
+
+        // Guides
+        "guide": "var(armadillo1)",
+        "active_guide": "color(var(white) alpha(0.45))",
+        "stack_guide":  "color(var(white) alpha(0.25))",
+
+        // Brackets
+        "brackets_options": "underline",
+        "brackets_foreground": "color(var(white) alpha(0.65))",
+        "bracket_contents_options": "underline",
+        "bracket_contents_foreground": "color(var(white) alpha(0.65))",
+
+        // Tags
+        "tags_options": "stippled_underline"
+    },
+    "rules":
+    [
+        {
+            "name": "Comment",
+            "scope": "comment",
+            "foreground": "var(armadillo3)"
+        },
+        {
+            "name": "String",
+            "scope": "string",
+            "foreground": "var(blue)"
+
+        },
+        {
+            "name": "Escape Sequences",
+            "scope": "constant.character.escape",
+            "foreground": "var(orange1)"
+
+        },
+        {
+            "name": "Operators",
+            "scope": "keyword.operator",
+            "foreground": "var(red2)"
+        },
+        {
+            "name": "Probability Operators",
+            "scope": "keyword.operator.probability",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Non-Terminal (definition)",
+            "scope": "entity.name.non-terminal.polygen",
+            "foreground": "var(yellow1)",
+            "font_style": "bold"
+
+        },
+        {
+            "name": "Non-Terminal",
+            "scope": "variable.other.non-terminal.polygen",
+            "foreground": "var(yellow1)",
+            "font_style": "normal"
+        },
+        {
+            "name": "Label",
+            "scope": "variable.other.label.polygen",
+            "foreground": "var(purple)"
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid",
+            "foreground": "var(white2)",
+            "background": "var(red2)"
+        },
+        {
+            "scope": "message.error",
+            "foreground": "var(red1)"
+        }
+    ]
+}

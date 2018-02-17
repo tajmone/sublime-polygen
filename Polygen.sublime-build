@@ -1,0 +1,48 @@
+{
+  "shell_cmd": "polygen \"$file\"",
+  "working_dir": "$file_path",
+  "selector": "source.polygen",
+  "file_patterns": [ "*.grm" ],
+
+  "variants":
+  [
+    {
+      "name": "verbose",
+      "shell_cmd": "polygen -v \"$file\"",
+
+    },
+    {
+      "name": "build to file (<filename>.out.txt)",
+      "shell_cmd": "polygen \"$file\" -o \"$file_base_name.out.txt\"",
+
+    },
+    {
+      "name": "build to file verbose",
+      "shell_cmd": "polygen -v \"$file\" -o \"$file_base_name.out.txt\"",
+
+    },
+    {
+      "name": "check grammar",
+      "shell_cmd": "polygen -t \"$file\" 2>&1"
+
+    },
+    {
+      "name": "check grammar (pedantic)",
+      "shell_cmd": "polygen -t -pedantic \"$file\" 2>&1"
+
+    },
+    {
+      "name": "show grammar info",
+      "shell_cmd": "polygen -info \"$file\" 2>&1"
+
+    },
+    {
+      "name": "preprocess",
+      "shell_cmd": "polygen -pre \"$file\""
+    },
+    {
+      "name": "preprocess to file (<filename>.pre.txt)",
+      "shell_cmd": "polygen -pre \"$file\" -o \"$file_base_name.pre.txt\""
+    }
+  ]
+}

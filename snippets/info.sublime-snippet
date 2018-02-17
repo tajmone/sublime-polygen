@@ -1,0 +1,17 @@
+<snippet>
+  <content><![CDATA[
+I ::=   "title:    ${1}\n"
+      ^ "author:   ${2:$POLYGEN_AUTHOR}\n"
+      ^ "language: ${3:$POLYGEN_LANG}\n"
+      ^ "status:   ${4:embryonic}\n"
+      ^ "topic:    ${5}\n"
+      ^ "audience: ${6}\n"
+      ^ "disclaim: ${8}\n"
+      ^ "created:  ${9:DD/MM/YY}\n"
+;
+
+]]></content>
+  <description>Polygen grammar info preset</description>
+  <tabTrigger>info</tabTrigger>
+  <scope>source.polygen</scope>
+</snippet>

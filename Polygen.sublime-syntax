@@ -1,0 +1,211 @@
+%YAML 1.2
+---
+# "Polygen.sublime-syntax" v1.0 (2018-02-16) | PML v1.0 | Polygen v1.0.6
+# ==============================================================================
+#                                 Polygen Syntax                                
+# ==============================================================================
+# Syntax definition for Polygen grammars (Polygen Meta Language - PML):
+# -- https://github.com/alvisespano/Polygen
+# -- https://github.com/tajmone/polygen-docs
+# ------------------------------------------------------------------------------
+# Copyright (c) Tristano Ajmone, 2018. MIT License.
+# -- https://github.com/tajmone/sublime-polygen
+# ------------------------------------------------------------------------------
+name: Polygen
+comment: Polygen grammar source files
+file_extensions:
+  - grm
+scope: source.polygen
+
+
+variables:
+  non_terminal: '[A-Z][A-Za-z0-9]*'
+  label: '[A-Za-z0-9]+'
+
+
+contexts:
+  
+  prototype:
+    - include: comments
+    - include: probability
+
+  main:
+
+  #################
+  # LABEL SELECTION
+  #################
+  - match: '(\.)({{label}})'
+    captures:
+      1: keyword.operator.dotselector.polygen
+      2: variable.other.label.polygen
+
+  #########################
+  # LABEL GROUPED SELECTION
+  #########################
+  - match: '(\.)(\()'
+    captures:
+      1: keyword.operator.dotselector.polygen
+      2: keyword.operator.polygen
+         punctuation.section.parens.begin.polygen
+    push: labels_group
+
+  ################################
+  # NON TERMINAL SYMBOL DEFINITION
+  ################################
+  - match: '(?<!\.)({{non_terminal}})\s*(::?=)\s*'
+    captures:
+      1: variable.other.non-terminal.polygen
+         entity.name.non-terminal.polygen
+      2: keyword.operator.assignment.polygen
+
+  ##################
+  # LABEL DEFINITION
+  ##################
+  - match: '({{label}})\s*(:)'
+    captures:
+      1: variable.other.label.polygen
+         entity.name.label.polygen
+      2: keyword.operator.assignment.polygen
+
+  ##################################
+  # NON TERMINAL SYMBOL (PRODUCTION)
+  ##################################
+  - match: \b{{non_terminal}}\b
+    scope: variable.other.non-terminal.polygen
+
+  #########
+  # STRINGS
+  #########
+  - match: '"'
+    scope: punctuation.definition.string.begin.polygen
+    captures:
+      1: string.quoted.double.polygen
+      2: punctuation.definition.string.begin.polygen
+      # 3: punctuation.definition.string.end.polygen
+    push:
+      - meta_include_prototype: false
+      - meta_scope: string.quoted.double.polygen
+      - match: '"'
+        scope: punctuation.definition.string.end.polygen
+        pop: true
+      - include: escapes
+
+  #############
+  # PARENTHESES
+  #############
+  - match: \(
+    scope: keyword.operator.polygen
+           punctuation.section.parens.begin.polygen
+    push: parentheses
+
+  # Handle stray parentheses
+  # ========================
+  - match: \)
+    scope: invalid.illegal.stray-parens-end.polygen
+
+  ##########
+  # BRACKETS
+  ##########
+  - match: \[
+    scope: keyword.operator.polygen
+           punctuation.section.brackets.begin.polygen
+    push: brackets
+
+  # Handle stray brackets
+  # =====================
+  - match: \]
+    scope: invalid.illegal.stray-bracket-end.polygen
+
+   ########
+   # BRACES
+   ########
+  - match: \{
+    scope: keyword.operator.polygen
+           punctuation.section.braces.begin.polygen
+    push: braces
+
+  # Handle stray braces
+  # ===================
+  - match: \}
+    scope: invalid.illegal.stray-braces-end.polygen
+
+  ###########
+  # OPERATORS
+  ###########
+  - match: '::?=|\^|\.|:|\+|-|>|<|\(|\)|\[|]|\{|}|\||,|;|_|\\'
+  # - match: ::?=|\^|\.|:|\+|-|>|<|\||,|;|_|\\
+  # - match: \^|\.|\+|-|>|<|\||,|;|_|\\
+    scope: keyword.operator.polygen
+
+
+# ==============================================================================
+#                                 OTHER CONTEXTS                                
+# ==============================================================================
+
+  parentheses:
+    - meta_scope: meta.group.polygen
+    - match: \)
+      scope: keyword.operator.polygen
+             punctuation.section.parens.end.polygen
+      pop: true
+    - include: main
+      
+  brackets:
+    - meta_scope: meta.brackets.polygen
+    - match: \]
+      scope: keyword.operator.polygen
+             punctuation.section.brackets.end.polygen
+      pop: true
+    - include: main
+      
+  braces:
+    - meta_scope: meta.braces.polygen
+    - match: \}
+      scope: keyword.operator.polygen
+             punctuation.section.braces.end.polygen
+      pop: true
+    - include: main
+      
+  ##################
+  # ESCAPE SEQUENCES
+  ##################
+  escapes:
+    - match: \\\d{3}|\\[nrbt\\"]
+      scope: constant.character.escape.polygen
+    - match: \\. # Any other escape is invalid
+      scope: invalid.illegal.unknown-escape.polygen
+
+  #######################
+  # PROBABILITY OPERATORS
+  #######################
+  probability:
+    - match: '[+-]'
+      scope: keyword.operator.probability
+
+  ########################
+  # LABELS SELECTION GROUP
+  ########################
+  labels_group:
+    - include: comments
+    - include: probability
+    - meta_scope: meta.group.polygen
+    - match: \)
+      scope: keyword.operator.polygen
+             punctuation.section.parens.end.polygen
+      pop: true
+    - match: '{{label}}'
+      scope: variable.other.label.polygen
+    - match: \|
+      scope: keyword.operator.polygen
+
+  ##########
+  # COMMENTS
+  ##########
+  comments:
+  - match: \(\*
+    scope: punctuation.definition.comment.polygen
+    push:
+      - meta_scope: comment.block.polygen
+      - match: \*\)
+        scope: punctuation.definition.comment.polygen
+        pop: true

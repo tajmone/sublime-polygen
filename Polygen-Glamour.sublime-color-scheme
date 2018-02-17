@@ -1,0 +1,129 @@
+// =============================================================================
+// Polygen Glamour v1.0 (2018-02-16)
+// =============================================================================
+// Copyright (c) Tristano Ajmone, 2018. MIT License.
+// -- https://github.com/tajmone/sublime-polygen
+// -----------------------------------------------------------------------------
+{
+    "name": "Polygen Glamour",
+    "author": "Tristano Ajmone",
+    "variables":
+    {
+        "dark1":    "#100B0B", // darkest
+        "dark2":    "#181010",
+        "dark3":    "#362926",
+        "dark4":    "#55423B",
+
+        "light1":   "#8C786A", // brownish
+        "light2":   "#C9AFA3", // mid tone skin
+        "light3":   "#EBD7CB", // skin tone
+
+        "blue":     "#5CADD5",
+        "green":    "#6FB697",
+        "orange":   "#FB886C",     
+        "purple":   "#9B98D3",
+        "red1":     "#A1212C", // dark red
+        "red2":     "#BF3F3A", // medium red
+        "red3":     "#F04D48", // light red
+        "white":    "#FBFAF9", // creamy white
+        "yellow":   "#FBCD6C"
+    },
+    "globals":
+    {
+        "foreground": "var(light3)",
+        "background": "var(dark1)",
+        "caret": "var(white)",
+        "invisibles": "color(var(white) alpha(0.35))",
+        "line_highlight": "var(dark3)",
+        
+        // Accents
+        "misspelling": "var(red2)",
+        "minimap_border": "var(light1)",
+        "accent": "var(red2)",
+
+        // Gutter
+        "gutter": "var(dark1)",
+        "gutter_foreground": "color(var(light1) alpha(0.6))",
+
+        // Selection
+        "selection": "var(dark4)",
+        "inactive_selection": "var(dark3)",
+
+        // Find 
+        "highlight": "var(light3)",
+        "find_highlight": "var(light3)",
+        "find_highlight_foreground": "var(dark1)",
+
+        // Guides
+        "guide": "var(dark3)",
+        "active_guide": "color(var(light2) alpha(0.6))",
+        "stack_guide":  "color(var(light2) alpha(0.35))",
+
+        // Brackets
+        "brackets_options": "underline",
+        "brackets_foreground": "color(var(white) alpha(0.65))",
+        "bracket_contents_options": "underline",
+        "bracket_contents_foreground": "color(var(white) alpha(0.65))",
+        
+        // Tags
+        "tags_options": "stippled_underline",
+
+        // Shadows
+        "shadow_width": "15"
+    },
+    "rules":
+    [
+        {
+            "name": "Comment",
+            "scope": "comment",
+            "foreground": "var(light1)"
+        },
+        {
+            "name": "String",
+            "scope": "string",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Escape Sequences",
+            "scope": "constant.character.escape",
+            "foreground": "var(orange)"
+        },
+        {
+            "name": "Operators",
+            "scope": "keyword.operator",
+            "foreground": "var(red2)"
+        },
+        {
+            "name": "Probability Operators",
+            "scope": "keyword.operator.probability",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Non-Terminal (definition)",
+            "scope": "entity.name.non-terminal",
+            "foreground": "var(yellow)",
+            "font_style": "bold"
+        },
+        {
+            "name": "Non-Terminal",
+            "scope": "variable.other.non-terminal",
+            "foreground": "var(yellow)",
+            "font_style": "normal"
+        },
+        {
+            "name": "Label",
+            "scope": "variable.other.label",
+            "foreground": "var(purple)"
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid",
+            "foreground": "var(white)",
+            "background": "var(red1)"
+        },
+        {
+            "scope": "message.error",
+            "foreground": "var(red2)"
+        }
+    ]
+}
