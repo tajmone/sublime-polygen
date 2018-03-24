@@ -1,12 +1,13 @@
 # Sublime Polygen Changelog
 
-# v1.1.0-rc.1 (2018/02/17)
+# v1.1.0 (2018/03/24)
 
-Release candidate commits heading toward v1.1.0, in order to [fix some issues] raised by the reviewer of my pull-request for submission of the Sublime-Polygen in [Package Control Default Channel].
+This update fixes some requirements for inclusion in [Package Control Default Channel], as requested by project reviewers (see [PR #6948]).
 
 - `Polygen.sublime-settings`
     + Removed redundant file extensions settings
     + All Default Settings commented out (all settings are now just commented presets the user can refer to)
+- New __Non-Terminal Definition__ snippet (`nt`)
 - Updated Documentation
 
 
@@ -21,7 +22,7 @@ Sublime-Polygen v1.0.0 (`ST >=3149`), first GitHub release; [pull-requested] for
 - Two color schemes (Polygen-specific):
     + "Polygen Glamour" (default)
     + "Polygen Monokai"
-- Grammar info snippet
+- __Grammar Info__ snippet (`info`)
 - Goto Symbol:
     + non-terminal symbols in rule definition
     + labels (except in dot selections)
@@ -40,3 +41,5 @@ Sublime-Polygen v1.0.0 (`ST >=3149`), first GitHub release; [pull-requested] for
 [Package Control Default Channel]: https://github.com/wbond/package_control_channel
 
 [pull-requested]: https://github.com/wbond/package_control_channel/pull/6948
+
+[PR #6948]: https://github.com/wbond/package_control_channel/pull/6948

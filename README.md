@@ -9,23 +9,25 @@ Adds syntax highlighting for Polygen grammars (`*.grm`), useful editing features
 - Polygen syntax: Polygen Meta Language (PML) 1.0
 - Build system: Polygen v1.0.6
 
+
 -----
 
 **Table of Contents**
 
-<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="true" lowercase_only_ascii="true" uri_encoding="true" depth="3" -->
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Features](#features)
-    - [Syntax Highlighting](#syntax-highlighting)
-    - [Color Schemes](#color-schemes)
-        - [Polygen Glamour](#polygen-glamour)
-        - [Polygen Monokai](#polygen-monokai)
-    - [Goto Symbol](#goto-symbol)
-    - [Build Systems](#build-systems)
+  - [Syntax Highlighting](#syntax-highlighting)
+  - [Color Schemes](#color-schemes)
+    - [Polygen Glamour](#polygen-glamour)
+    - [Polygen Monokai](#polygen-monokai)
+  - [Goto Symbol](#goto-symbol)
+  - [Build Systems](#build-systems)
+  - [Snippets](#snippets)
     - [Grammar Info Snippet](#grammar-info-snippet)
-        - [Custom Variables Support](#custom-variables-support)
+    - [Non-Terminal Symbol Definition Snippet](#non-terminal-symbol-definition-snippet)
 - [License](#license)
 - [Contributing](#contributing)
 - [Features Requests and Support](#features-requests-and-support)
@@ -33,6 +35,7 @@ Adds syntax highlighting for Polygen grammars (`*.grm`), useful editing features
 <!-- /MarkdownTOC -->
 
 -----
+
 
 # Requirements
 
@@ -173,7 +176,14 @@ where, unless `to file` is specified, all operations' output is printed to ST co
 
 The above build systems represent common testing operations while working on a grammar source code, and they allow to perform these tests without leaving the editor. For big grammars with long output, the `to file` variants of these operations can be used, and the output file kept open in Sublime Text, so that with each execution of the build system the contents of the output file will be refreshed in the editor, allowing to test a grammar's output live in the editor.
 
-## Grammar Info Snippet
+## Snippets
+
+Sublime-Polygen ships with two useful snippets to simplify working with common grammars tasks:
+
+- Grammar Info
+- Non-Terminal Symbol Definition
+
+### Grammar Info Snippet
 
 The Info snippet provides a quick template for adding the description block to a grammar:
 
@@ -199,7 +209,7 @@ The `I` non-terminal symbol is used by Polygen to provide a summary string about
 
 You are free to add your custom fields, and omit fields which you don't need. You can also copy the "`Polygen/snippets/info.sublime-snippet`" file in "`Packages/User/`" and adapt it to your custom needs.
 
-### Custom Variables Support
+#### Custom Variables Support
 
 The `info` snippets also supports custom environment variables as default values for some of its fields:
 
@@ -259,6 +269,22 @@ I ::=   "title:    \n"
 ;
 ```
 
+
+### Non-Terminal Symbol Definition Snippet
+
+The Non-Terminal snippet is a convenient shortcut to quickly define non-terminal symbols or the `S` starting symbol.
+
+![Non-Terminal Symbol Snippet][Screenshot non-terminal snippet]
+
+
+Just type `nt` and hit <kbd>TAB</kbd> inside a "`*.grm`" file, Sublime-Polygen will expand the snippet to:
+
+```polygen
+S ::=  ;
+```
+
+By default, the snippet produces the definition of the starting non-terminal symbol `S`, which is required in every grammar. You can keep the `S` symbol and jump to the definition by hitting <kbd>TAB</kbd>, or you can overwrite the symbol name before doing so.
+
 # License
 
 "__Sublime Polygen__" was created by Tristano Ajmone and released under the terms of the MIT License:
@@ -313,3 +339,4 @@ If you have a feature request, need support or wish to report bugs, please open 
 [Screenshot Build Systems]: https://raw.github.com/tajmone/sublime-polygen/master/screenshots/build-systems.gif "Preview of Polygen build systems"
 [Screenshot info snippet]: https://raw.github.com/tajmone/sublime-polygen/master/screenshots/info-snippet.gif
 [Screenshot info env vars]: https://raw.github.com/tajmone/sublime-polygen/master/screenshots/info-snippet-vars.gif
+[Screenshot non-terminal snippet]: https://raw.github.com/tajmone/sublime-polygen/master/screenshots/non-terminal-snippet.gif

@@ -180,7 +180,7 @@ contexts:
   #######################
   probability:
     - match: '[+-]'
-      scope: keyword.operator.probability
+      scope: keyword.operator.probability.polygen
 
   ########################
   # LABELS SELECTION GROUP
