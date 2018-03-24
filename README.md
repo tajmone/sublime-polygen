@@ -78,32 +78,22 @@ Sublime Polygen provides robust support for Polygen grammars syntax, with nice s
 
 Each of the above listed items provides a specific scope, allowing to implement different syntax coloring in custom color schemes.
 
-Non-terminal symbols in rule definition and in productions both share a common scope, but the former as an additional scope allowing to (optionally) implement a different highlighting for symbols in rule definitions (usually, in bold). Similarly, labels and labels in dot selections share a common scope, but the former has an additional scope. These additional scopes for non-terminals and lables are also used by the Goto symbol functionality, in order to quickly find non-terminal symbols only in definition rules, and navigate labels occurences by skipping label selections.
+Non-terminal symbols in rule definition and in productions both share a common scope, but the former as an additional scope allowing to (optionally) implement a different highlighting style for symbols in rule definitions (e.g., in bold). Similarly, labels and labels in dot selections share a common scope, but the former has an additional scope. These additional scopes for non-terminals and lables are also used by the Goto symbol functionality, in order to quickly find non-terminal symbols only in definition rules, and navigate labels occurences by skipping label selections.
 
 > __NOTE__ — Polygen syntax is defined using ST3's new `.sublime-syntax` file format, added in __BUILD 3103__ (2016-02-09).
 
 ## Color Schemes
 
-Because of the nature of Polygen Meta Language (PML), the syntax uses some custom (and rather arbitrary) scope names, and therefore requires dedicated color schemes for syntax highlighting.
+Because of the nature of Polygen Meta Language (PML), the syntax uses some custom (and rather arbitrary) scope names, and therefore ships with two dedicated color schemes conceived for better syntax highlighting results.
 
 The package ships with two color schemes:
 
 - "Polygen Glamour" (default)
 - "Polygen Monokai"
 
-### Polygen Glamour
+Neither of them will be enforced by the package installation; enabling them is up to the user and can be achieved by editing the User settings file for Polygen syntax.
 
-"Polygen Glamour" is the default scheme. It's dark and warm, with a vintage color palette. 
-
-![Polygen Glamour][Screenshot Glamour]
-
-### Polygen Monokai
-
-"Polygen Monokai" is the alternative scheme. Based on Sublime Text's native "Monokai" scheme, by Wimer Hazenberg, and adapted to Polygen's syntax scope names.
-
-![Polygen Monokai][Screenshot Monokai]
-
-To switch to Monkai, open the menu:
+To enable a color scheme, open the menu:
 
     Preferences > Package Settings > Polygen > Settings
 
@@ -111,12 +101,42 @@ this will launch a new instance of Sublime Text, with the default settings of Su
 
 ```json
 {
+    "color_scheme": "Packages/Polygen/Polygen-Glamour.sublime-color-scheme"
+}
+```
+
+... where `Polygen-Glamour.sublime-color-scheme` should be the name of the desired scheme (change it to `Polygen-Monokai.sublime-color-scheme` if you want to use the Monokai scheme).
+
+In the left pane you'll find comment-out example settings and guidelines which you can copy and paste over to the right pane; these include notes and presets for the color schemes.
+
+
+> __NOTE__ — Both color schemes are defined using ST3's new `.sublime-color-scheme` format, added in __DEV BUILD 3149__ (2017-10-13).
+
+### Polygen Glamour
+
+"Polygen Glamour" is the default scheme. It's dark and warm, with a vintage color palette. 
+
+![Polygen Glamour][Screenshot Glamour]
+
+
+```json
+{
+    "color_scheme": "Packages/Polygen/Polygen-Glamour.sublime-color-scheme"
+}
+```
+
+### Polygen Monokai
+
+"Polygen Monokai" is the alternative scheme. Based on Sublime Text's native "Monokai" scheme, by Wimer Hazenberg, and adapted to Polygen's syntax scopes in order to provide better color balance among the syntax elements.
+
+![Polygen Monokai][Screenshot Monokai]
+
+```json
+{
     "color_scheme": "Packages/Polygen/Polygen-Monokai.sublime-color-scheme"
 }
 ```
 
-
-> __NOTE__ — Both color schemes are defined using ST3's new `.sublime-color-scheme` format, added in __DEV BUILD 3149__ (2017-10-13).
 
 ## Goto Symbol
 
