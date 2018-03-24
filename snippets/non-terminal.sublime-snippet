@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+${1:S} ::= ${2} ;
+
+]]></content>
+  <description>Polygen non-terminal symbol definition rule</description>
+  <tabTrigger>nt</tabTrigger>
+  <scope>source.polygen</scope>
+</snippet>
